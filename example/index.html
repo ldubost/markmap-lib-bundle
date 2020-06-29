@@ -1,0 +1,53 @@
+<html>
+<body>
+<form action="" name="form">
+<textarea name='md' cols="80" rows="25">
+# markmap-lib
+
+## Links
+
+- <https://markmap.js.org/>
+- [GitHub](https://github.com/gera2ld/markmap-lib)
+
+## Related
+
+- [coc-markmap](https://github.com/gera2ld/coc-markmap)
+- [gatsby-remark-markmap](https://github.com/gera2ld/gatsby-remark-markmap)
+
+## Features
+
+- links
+- **inline** ~~text~~ *styles*
+- multiline
+  text
+- `inline code`
+-
+    ```js
+    console.log('code block');
+    ```
+- MathJax - `(x = {-b \pm \sqrt{b^2-4ac} \over 2a})`
+</textarea>
+<input type="button" value="Go" onclick="go();" />
+</form>
+<svg id="markmap" style="width: 800px; height: 800px"></svg>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.js">
+</script>
+<script type="text/javascript">
+function go() {
+requirejs(["../dist/markmap-lib.transform.bundle.js", "../dist/markmap-lib.view.bundle.js"], function(transform, Markmap) {
+        document.getElementById("markmap").innerHTML = ""; 
+        var data = transform.transform(document.forms["form"].md.value);
+        console.log("data");
+        Markmap.loadPlugins(['mathJax'], {
+  	mathJax: {
+    	tex: {
+      		inlineMath: [['$','$'], ['\\(','\\)']],
+    	},
+ 	 },
+  	});
+        Markmap.markmap("#markmap", data);
+});
+}
+</script>
+</body>
+</html>

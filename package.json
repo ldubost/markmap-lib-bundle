@@ -1,0 +1,38 @@
+{
+  "name": "markmap-bundle",
+  "version": "1.0.0",
+  "description": "Bundling Markmap in one file",
+  "main": "rollup.config.js",
+  "scripts": {
+    "prebuild": "eslint lib test",
+    "build": "rollup -c --environment BUILD:production",
+    "watch": "rollup -c -w",
+    "pretest": "rollup -c",
+    "prepublish": "BUILD=production npm test"
+  },
+  "repository": "ldubost/markmap-lib-bundle",
+  "keywords": [
+    "es6",
+    "modules",
+    "rollup",
+    "bundle",
+    "browser"
+  ],
+  "author": "Ludovic Dubost",
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "homepage": "https://github.com/ldubost/markmap-lib-bundle#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^13.0.0",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^8.1.0",
+    "markmap-lib": "^0.7.11",
+    "rollup": "^2.18.1",
+    "rollup-plugin-closure-compiler-js": "^1.0.6",
+    "rollup-plugin-node-builtins": "^2.1.2",
+    "rollup-plugin-node-globals": "^1.4.0"
+  }
+}
